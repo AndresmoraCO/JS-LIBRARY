@@ -1,5 +1,5 @@
 {
-  "name": "js-library",
+  "name": "wanderly_single_file",
   "version": "1.0.0",
   "main": "index.html",
   "scripts": {
@@ -10,7 +10,7 @@
     "url": "git+https://github.com/AndresmoraCO/JS-LIBRARY.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Andres Mora",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AndresmoraCO/JS-LIBRARY/issues"

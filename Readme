@@ -1,0 +1,9 @@
+Libraries Used:
+    1. Granim.js 
+        - Hero background gradient animation
+    2. Glide.js 
+        - Image carousel for destinations
+    3. Leaflet.js 
+        - Interactive map with destination markers
+    4. AOS 
+        - Smooth scroll-based animations

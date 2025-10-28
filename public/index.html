@@ -1,11 +1,186 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Wanderly — Discover Your Next Destination</title>
+
+
+  <!-- external -->
+   <link rel="stylesheet" href="Assets/CSS/style.css">
+  <!-- Styles for third-party libs -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
 </head>
 <body>
-    <h1>hello world</h1>
+
+    <!-- HERO -->
+    <header id="hero" role="banner" aria-label="Wanderly hero">
+        <canvas id="granim-canvas"></canvas>
+
+        <div class="container hero-content" data-aos="zoom-in">
+            <div class="eyebrow">Wanderly</div>
+            <h1>Find your next escape — tailored &amp; curated</h1>
+            <p class="lead">
+                Inspiration, beautiful places, and tools to plan your trip. 
+                Mobile-first, accessible, and ready to explore.
+            </p>
+
+            <div class="cta-row">
+            <button class="btn" onclick="document.getElementById('destinations').scrollIntoView({behavior:'smooth'})">
+                Explore Destinations
+            </button>
+            <a href="#map" class="btn ghost">Open Map</a>
+        </div>
+    </div>
+
+    </header>
+
+    <main class="container" id="main" role="main">
+
+    <!-- DESTINATIONS -->
+    <section id="destinations" aria-labelledby="destinations-title" data-aos="fade-up">
+        <h2 id="destinations-title" class="section-title">Popular Destinations</h2>
+        <p class="section-sub">Swipe or use arrows — each card highlights a top travel spot.</p>
+
+        <div class="card">
+        <!-- Glide carousel -->
+            <div class="glide" id="glide-dest">
+                <div class="glide__track" data-glide-el="track">
+                    <ul class="glide__slides">
+                        <li class="glide__slide">
+                            <article class="dest-card" aria-label="Paris">
+                                <img src="Assets/Imgs/Paris.jpg" 
+                                    alt="Paris skyline with Eiffel Tower">
+                                <div class="dest-meta">
+                                    <h3>Paris, France</h3>
+                                    <p class="muted">Art, cafés, and riverside walks.</p>
+                                </div>
+                            </article>
+                        </li>
+
+                        <li class="glide__slide">
+                            <article class="dest-card" aria-label="Tokyo">
+                                <img src="Assets/Imgs/Tokyo.jpg" 
+                                alt="Tokyo city lights at night">
+                                <div class="dest-meta">
+                                    <h3>Tokyo, Japan</h3>
+                                    <p class="muted">Neon nights and tranquil temples.</p>
+                                </div>
+                            </article>
+                        </li>
+
+                        <li class="glide__slide">
+                            <article class="dest-card" aria-label="Vancouver">
+                                <img src="Assets/Imgs/Vancouver.jpg" 
+                                alt="Vancouver mountains and skyline">
+                                <div class="dest-meta">
+                                    <h3>Vancouver, Canada</h3>
+                                    <p class="muted">Mountains, sea, and city life.</p>
+                                </div>
+                            </article>
+                        </li>
+
+                        <li class="glide__slide">
+                            <article class="dest-card" aria-label="Lisbon">
+                                <img src="Assets/Imgs/Lisbon.jpg" alt="Colorful buildings in Lisbon">
+                                <div class="dest-meta">
+                                    <h3>Lisbon, Portugal</h3>
+                                    <p class="muted">Sunlit hills and seafood delights.</p>
+                                </div>
+                            </article>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- arrows -->
+                <div class="glide__arrows" data-glide-el="controls">
+                    <button class="glide__arrow glide__arrow--left" 
+                    data-glide-dir="<" aria-label="Previous">◀</button>
+                    <button class="glide__arrow glide__arrow--right" 
+                    data-glide-dir=">" aria-label="Next">▶</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAP + INFO -->
+    <section id="explore" aria-labelledby="explore-title" data-aos="fade-up">
+        <h2 id="explore-title" class="section-title">Explore on the Map</h2>
+        <p class="section-sub">
+            Interactive markers show the featured destinations. Tap a marker to open details.
+        </p>
+
+        <div class="split">
+        <div class="card">
+            <div id="mapid" aria-label="Map of featured destinations"></div>
+        </div>
+
+            <aside class="card" aria-labelledby="stats-title">
+                <h3 id="stats-title">Why travel?</h3>
+                <p class="muted">Travel refreshes perspective. Here are a few quick facts:</p>
+                <ul>
+                    <li class="muted">Top picks curated by local experts.</li>
+                    <li class="muted">Mobile-first itineraries and offline tips.</li>
+                    <li class="muted">Sustainable travel options suggested.</li>
+                </ul>
+                <div style="margin-top:12px">
+                    <button class="btn" onclick="alert('Save this trip — demo')">
+                        Save This Trip
+                    </button>
+                    <button class="btn ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+                        Contact Us
+                    </button>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="contact-title" data-aos="fade-up">
+        <h2 id="contact-title" class="section-title">Get In Touch</h2>
+        <p class="section-sub">Send a quick message and we'll get back with suggested itineraries.</p>
+
+        <div class="card">
+            <form id="contact-form" onsubmit="event.preventDefault(); handleSubmit();" novalidate>
+                <div style="display:grid;grid-template-columns:1fr;gap:8px">
+                    <label class="muted">Name <input name="name" type="text" 
+                        required style="width:100%;padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.03);color:inherit">
+                    </label>
+                    <label class="muted">Email <input name="email" type="email" 
+                        required style="width:100%;padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.03);color:inherit">
+                    </label>
+                    <label class="muted">Message <textarea name="message" rows="4" 
+                        required style="width:100%;padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.03);color:inherit">
+                        </textarea>
+                    </label>
+                <div style="display:flex;gap:8px;justify-content:flex-end">
+                    <button class="btn" type="submit">
+                        Send
+                    </button>
+                    <button class="btn ghost" type="button" onclick="document.getElementById('contact-form').reset()">
+                        Reset
+                    </button>
+                </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+  </main>
+
+  <footer class="container">
+    <small>© Wanderly — Demo travel site • Libraries: Granim, Glide, Leaflet, AOS</small>
+  </footer>
+
+  <!-- Third-party libs (CDNs) -->
+  <script src="https://cdn.jsdelivr.net/npm/granim@2.0.0/dist/granim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.5.2/dist/glide.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <script src="Assets/JS/script_main.js"></script>
 </body>
 </html>
