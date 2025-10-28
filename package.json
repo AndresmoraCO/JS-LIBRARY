@@ -1,0 +1,23 @@
+{
+  "name": "js-library",
+  "version": "1.0.0",
+  "main": "index.html",
+  "scripts": {
+    "start": "lite-server --baseDir=\"public\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndresmoraCO/JS-LIBRARY.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndresmoraCO/JS-LIBRARY/issues"
+  },
+  "homepage": "https://github.com/AndresmoraCO/JS-LIBRARY#readme",
+  "description": "",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
